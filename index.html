@@ -1,1 +1,100 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/><meta name="theme-color" content="#0b1220"/><meta name="apple-mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-title" content="Dash Goals"/><title>Dash Goals</title><style>body{font-family:-apple-system,system-ui,sans-serif;background:#070b14;color:#f4f7fb;margin:0;padding:20px} .card{background:#121a2b;border:1px solid #2a3650;border-radius:16px;padding:16px;margin:0 0 12px} .gold{color:#f3c15a} h1{margin:0 0 8px} input,button{font:inherit} input{padding:12px;border-radius:10px;border:1px solid #2a3650;background:#0d1422;color:#fff;width:100%;box-sizing:border-box} button{padding:12px;border:0;border-radius:10px;font-weight:700} .primary{background:#f3c15a;color:#1a1406} .row{display:flex;gap:8px;margin-top:8px} .row button{flex:1;background:#22304a;color:#fff}</style></head><body><p class="gold">DoorDash · Las Vegas</p><h1>Dash Goals</h1><div class="card"><p>Open the full tracker from the link in your chat. This placeholder confirms the repo is live.</p><p>Target $1,500 · Today Wed 23 Sep goal $120</p></div></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0b1220" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Dash Goals" />
+  <title>Dash Goals — $1,500 in 3 Weeks</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="top">
+      <div>
+        <p class="eyebrow">DoorDash · Las Vegas</p>
+        <h1>Dash Goals</h1>
+      </div>
+    </header>
+    <section class="hero card">
+      <div class="hero-row">
+        <div>
+          <p class="label">Campaign total</p>
+          <p class="big" id="loggedTotal">$0</p>
+        </div>
+        <div class="right">
+          <p class="label">Target</p>
+          <p class="target">$1,500</p>
+        </div>
+      </div>
+      <div class="bar"><div class="fill" id="overallFill"></div></div>
+      <p class="meta" id="overallMeta">$1,500 remaining</p>
+    </section>
+    <section class="card today">
+      <div class="today-head">
+        <div>
+          <p class="label" id="todayDateLabel">Today</p>
+          <h2 id="todayTitle">Loading…</h2>
+        </div>
+        <span class="badge" id="todayBadge">—</span>
+      </div>
+      <p class="windows" id="todayWindows"></p>
+      <div class="goal-row">
+        <div>
+          <p class="label">Today’s goal</p>
+          <p class="goal-amt" id="todayGoal">$0</p>
+        </div>
+        <div class="right">
+          <p class="label">Logged</p>
+          <p class="goal-amt logged" id="todayLogged">$0</p>
+        </div>
+      </div>
+      <div class="bar"><div class="fill gold" id="todayFill"></div></div>
+      <p class="meta" id="todayMeta"></p>
+    </section>
+    <section class="card">
+      <p class="label">Log earnings</p>
+      <div class="quick">
+        <button data-add="10">+$10</button>
+        <button data-add="20">+$20</button>
+        <button data-add="40">+$40</button>
+        <button data-add="60">+$60</button>
+      </div>
+      <form id="logForm" class="log-form">
+        <input id="amountInput" type="number" min="0" step="0.01" inputmode="decimal" placeholder="Amount" required />
+        <button type="submit" class="primary">Add</button>
+      </form>
+      <div class="log-actions">
+        <button class="ghost" id="undoBtn" type="button">Undo last</button>
+        <button class="ghost danger" id="clearTodayBtn" type="button">Clear today</button>
+      </div>
+    </section>
+    <section class="card">
+      <p class="label">Schedule</p>
+      <p class="meta tight">$120 full days · Fri+Sat pair = $120</p>
+      <div class="calendar" id="calendar"></div>
+    </section>
+    <section class="card">
+      <p class="label">Today’s entries</p>
+      <ul class="entries" id="entries"></ul>
+    </section>
+    <footer class="foot">
+      <button class="ghost" id="resetBtn" type="button">Reset all data</button>
+      <p>Data stays on this phone. Use Share → Add to Home Screen.</p>
+    </footer>
+  </div>
+  <dialog id="dayDialog">
+    <form method="dialog" class="dialog-inner">
+      <h3 id="dlgTitle"></h3>
+      <p id="dlgBody"></p>
+      <div class="dialog-actions">
+        <button class="ghost" value="close">Close</button>
+        <button class="primary" id="dlgJump" value="jump">View as today</button>
+      </div>
+    </form>
+  </dialog>
+  <script src="app.js"></script>
+</body>
+</html>
